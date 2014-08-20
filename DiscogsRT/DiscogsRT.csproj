@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>12.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6F45BA47-E610-4398-8C0C-B918D0432583}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BeeWee.DiscogsRT</RootNamespace>
+    <AssemblyName>DiscogsRT</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile32</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <TargetPlatform Include="WindowsPhoneApp, Version=8.1" />
+    <TargetPlatform Include="Windows, Version=8.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\Authentication.cs" />
+    <Compile Include="Api\Base.cs" />
+    <Compile Include="Api\Database.cs" />
+    <Compile Include="Api\Images.cs" />
+    <Compile Include="Api\Marketplace.cs" />
+    <Compile Include="Api\UserCollection.cs" />
+    <Compile Include="Api\UserIdentity.cs" />
+    <Compile Include="Api\UserWantlist.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="Models\Artist.cs" />
+    <Compile Include="Models\ArtistReleases.cs" />
+    <Compile Include="Models\Community.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Contributor.cs" />
+    <Compile Include="Models\DiscogsResponse.cs" />
+    <Compile Include="Models\Extraartist.cs" />
+    <Compile Include="Models\Format.cs" />
+    <Compile Include="Models\Identifier.cs" />
+    <Compile Include="Models\Identity.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\Label.cs" />
+    <Compile Include="Models\LabelReleases.cs" />
+    <Compile Include="Models\MasterRelease.cs" />
+    <Compile Include="Models\MasterReleaseVersions.cs" />
+    <Compile Include="Models\OAuthAccess.cs" />
+    <Compile Include="Models\OAuthRequest.cs" />
+    <Compile Include="Models\Pagination.cs" />
+    <Compile Include="Models\Profile.cs" />
+    <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Release.cs" />
+    <Compile Include="Models\Result.cs" />
+    <Compile Include="Models\SearchItemType.cs" />
+    <Compile Include="Models\SearchQuery.cs" />
+    <Compile Include="Models\SearchRessults.cs" />
+    <Compile Include="Models\Submitter.cs" />
+    <Compile Include="Models\Tracklist.cs" />
+    <Compile Include="Models\Urls.cs" />
+    <Compile Include="Models\Version.cs" />
+    <Compile Include="Models\Video.cs" />
+    <Compile Include="RequestHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Rester">
+      <HintPath>..\..\Rester\Rester\bin\Release\Rester.dll</HintPath>
+    </Reference>
+    <Reference Include="Utilities">
+      <HintPath>..\..\Utilities\Utilities\bin\Release\Utilities.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
