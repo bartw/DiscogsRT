@@ -8,8 +8,8 @@ namespace BeeWee.DiscogsRT.Api
 {
     public class Marketplace : Base
     {
-        internal Marketplace(string baseUri, string userAgent, string consumerKey, string consumerSecret)
-            : base(baseUri, userAgent, consumerKey, consumerSecret)
+        internal Marketplace(Rester.Client client, string baseUri, string userAgent, string consumerKey, string consumerSecret)
+            : base(client, baseUri, userAgent, consumerKey, consumerSecret)
         {
 
         }

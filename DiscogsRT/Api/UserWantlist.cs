@@ -8,8 +8,8 @@ namespace BeeWee.DiscogsRT.Api
 {
     public class UserWantlist : Base
     {
-        internal UserWantlist(string baseUri, string userAgent, string consumerKey, string consumerSecret)
-            : base(baseUri, userAgent, consumerKey, consumerSecret)
+        internal UserWantlist(Rester.Client client, string baseUri, string userAgent, string consumerKey, string consumerSecret)
+            : base(client, baseUri, userAgent, consumerKey, consumerSecret)
         {
 
         }

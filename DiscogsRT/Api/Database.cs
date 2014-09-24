@@ -10,8 +10,8 @@ namespace BeeWee.DiscogsRT.Api
 {
     public class Database : Base
     {
-        internal Database(string baseUri, string userAgent, string consumerKey, string consumerSecret)
-            : base(baseUri, userAgent, consumerKey, consumerSecret)
+        internal Database(Rester.Client client, string baseUri, string userAgent, string consumerKey, string consumerSecret)
+            : base(client, baseUri, userAgent, consumerKey, consumerSecret)
         {
 
         }

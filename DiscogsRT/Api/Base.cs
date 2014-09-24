@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 //using Windows.Web.Http.Headers;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading;
 
 namespace BeeWee.DiscogsRT.Api
 {
@@ -15,21 +16,21 @@ namespace BeeWee.DiscogsRT.Api
     {
         private const string UserAgentHeader = "User-Agent";
 
+        private Rester.Client _client;
         private string _baseUri;
         private string _userAgent;
         private string _consumerKey;
         private string _consumerSecret;
         private string _oauthKey;
         private string _oauthSecret;
-        private Rester.Client _client;
 
-        internal Base(string baseUri, string userAgent, string consumerKey, string consumerSecret)
+        internal Base(Rester.Client client, string baseUri, string userAgent, string consumerKey, string consumerSecret)
         {
+            _client = client;
             _baseUri = baseUri;
             _userAgent = userAgent;
             _consumerKey = consumerKey;
             _consumerSecret = consumerSecret;
-            _client = new Rester.Client();
         }
 
         internal void Authenticate(string oauthKey, string oauthSecret)
@@ -51,6 +52,7 @@ namespace BeeWee.DiscogsRT.Api
             }
 
             var uri = RequestHelper.BuildUri(_baseUri, endpoint, parameters);
+
             var response = await _client.Get(uri, headers);
             var discogsResponse = await RequestHelper.ReadResponse(response);
 

@@ -8,8 +8,8 @@ namespace BeeWee.DiscogsRT.Api
 {
     public class UserCollection : Base
     {
-        internal UserCollection(string baseUri, string userAgent, string consumerKey, string consumerSecret)
-            : base(baseUri, userAgent, consumerKey, consumerSecret)
+        internal UserCollection(Rester.Client client, string baseUri, string userAgent, string consumerKey, string consumerSecret)
+            : base(client, baseUri, userAgent, consumerKey, consumerSecret)
         {
 
         }

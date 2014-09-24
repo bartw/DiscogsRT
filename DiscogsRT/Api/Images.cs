@@ -8,8 +8,8 @@ namespace BeeWee.DiscogsRT.Api
 {
     public class Images : Base
     {
-        internal Images(string baseUri, string userAgent, string consumerKey, string consumerSecret)
-            : base(baseUri, userAgent, consumerKey, consumerSecret)
+        internal Images(Rester.Client client, string baseUri, string userAgent, string consumerKey, string consumerSecret)
+            : base(client, baseUri, userAgent, consumerKey, consumerSecret)
         {
 
         }

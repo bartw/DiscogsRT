@@ -10,8 +10,8 @@ namespace BeeWee.DiscogsRT.Api
 {
     public class UserIdentity : Base
     {
-        internal UserIdentity(string baseUri, string userAgent, string consumerKey, string consumerSecret)
-            : base(baseUri, userAgent, consumerKey, consumerSecret)
+        internal UserIdentity(Rester.Client client, string baseUri, string userAgent, string consumerKey, string consumerSecret)
+            : base(client, baseUri, userAgent, consumerKey, consumerSecret)
         {
 
         }
