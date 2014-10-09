@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeeWee.DiscogsRT.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,9 +40,22 @@ namespace BeeWee.DiscogsRT.Api
             return null;
         }
 
-        public object GetFolderReleases(string username, string id)
+        public async Task<DiscogsResponse<CollectionResults>> GetFolderReleases(string username, int id = 0, int perPage = -1, int page = -1)
         {
-            return null;
+            var endpoint = string.Format("/users/{0}/collection/folders/{1}/releases", username, id);
+            var parameters = new Dictionary<string, string>();
+
+            if (perPage > 0)
+            {
+                parameters.Add("per_page", perPage.ToString());
+            }
+
+            if (page > 0)
+            {
+                parameters.Add("page", page.ToString());
+            }
+
+            return await GetOAuth<CollectionResults>(endpoint, parameters, null);
         }
 
         public object CreateFolderReleaseInstance(string username, string folderId, string releaseId)

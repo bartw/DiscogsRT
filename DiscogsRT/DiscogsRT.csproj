@@ -49,6 +49,9 @@
     <Compile Include="Client.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\ArtistReleases.cs" />
+    <Compile Include="Models\BasicInformation.cs" />
+    <Compile Include="Models\CollectionItem.cs" />
+    <Compile Include="Models\CollectionResults.cs" />
     <Compile Include="Models\Community.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Contributor.cs" />
@@ -77,6 +80,8 @@
     <Compile Include="Models\Urls.cs" />
     <Compile Include="Models\Version.cs" />
     <Compile Include="Models\Video.cs" />
+    <Compile Include="Models\Want.cs" />
+    <Compile Include="Models\WantResults.cs" />
     <Compile Include="RequestHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
