@@ -7,7 +7,7 @@ namespace BeeWee.DiscogsRT
 {
     public class Client
     {
-        private readonly string _baseUri = "http://api.discogs.com";
+        private readonly string _baseUri = "https://api.discogs.com";
 
         private Rester.Client _rester;
 
