@@ -61,19 +61,19 @@ namespace BeeWee.DiscogsRT.Api
         public async Task<DiscogsResponse<SearchRessults>> Search(SearchQuery query, int perPage = -1, int page = -1)
         {
             var endpoint = string.Format("/database/search");
-            var parameters = query.GetParameters();
+            var headers = query.GetParameters();
             
             if (perPage > 0)
             {
-                parameters.Add("per_page", perPage.ToString());
+                headers.Add("per_page", perPage.ToString());
             }
 
             if (page > 0)
             {
-                parameters.Add("page", page.ToString());
+                headers.Add("page", page.ToString());
             }
 
-            return await GetOAuth<SearchRessults>(endpoint, parameters, null);
+            return await GetOAuth<SearchRessults>(endpoint, null, headers);
         }
     }
 }
