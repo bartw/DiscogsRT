@@ -58,10 +58,12 @@ namespace BeeWee.DiscogsRT.Api
             return await Get<LabelReleases>(endpoint, null, null);
         }
 
-        public async Task<DiscogsResponse<SearchRessults>> Search(SearchQuery query, int perPage = -1, int page = -1)
+        public async Task<DiscogsResponse<SearchResults>> Search(SearchQuery query, int perPage = -1, int page = -1)
         {
             var endpoint = string.Format("/database/search");
-            var headers = query.GetParameters();
+            var parameters = query.GetParameters();
+
+            var headers = new Dictionary<string, string>();
             
             if (perPage > 0)
             {
@@ -73,7 +75,8 @@ namespace BeeWee.DiscogsRT.Api
                 headers.Add("page", page.ToString());
             }
 
-            return await GetOAuth<SearchRessults>(endpoint, null, headers);
+            //return await GetOAuth<SearchResults>(endpoint, null, headers);
+            return await GetOAuth<SearchResults>(endpoint, parameters, headers);
         }
     }
 }

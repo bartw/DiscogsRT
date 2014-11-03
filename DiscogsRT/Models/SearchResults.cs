@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeeWee.DiscogsRT.Models
 {
-    public class SearchRessults
+    public class SearchResults
     {
         public Pagination pagination { get; set; }
         public List<Result> results { get; set; }

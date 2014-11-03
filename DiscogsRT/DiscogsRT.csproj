@@ -74,7 +74,7 @@
     <Compile Include="Models\Result.cs" />
     <Compile Include="Models\SearchItemType.cs" />
     <Compile Include="Models\SearchQuery.cs" />
-    <Compile Include="Models\SearchRessults.cs" />
+    <Compile Include="Models\SearchResults.cs" />
     <Compile Include="Models\Submitter.cs" />
     <Compile Include="Models\Tracklist.cs" />
     <Compile Include="Models\Urls.cs" />

@@ -21,7 +21,7 @@ namespace BeeWee.DiscogsRT
 
         public Client(string userAgent, string consumerKey, string consumerSecret)
         {
-            _rester = new Rester.Client(1, TimeSpan.FromSeconds(1));
+            _rester = new Rester.Client(Rester.SignatureMethod.PLAINTEXT, 1, TimeSpan.FromSeconds(1));
 
             Database = new Api.Database(_rester, _baseUri, userAgent, consumerKey, consumerSecret);
             Authentication = new Api.Authentication(_rester, _baseUri, userAgent, consumerKey, consumerSecret);
