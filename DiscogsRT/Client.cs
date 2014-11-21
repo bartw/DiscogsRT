@@ -9,7 +9,7 @@ namespace BeeWee.DiscogsRT
     {
         private readonly string _baseUri = "https://api.discogs.com";
 
-        private Rester.Client _rester;
+        private Rester.IClient _rester;
 
         public Api.Database Database { get; set; }
         public Api.Authentication Authentication { get; set; }
@@ -21,7 +21,7 @@ namespace BeeWee.DiscogsRT
 
         public Client(string userAgent, string consumerKey, string consumerSecret)
         {
-            _rester = new Rester.Client(Rester.SignatureMethod.PLAINTEXT, 1, TimeSpan.FromSeconds(1));
+            _rester = new Rester.ThrottledClient(1, TimeSpan.FromSeconds(1));
 
             Database = new Api.Database(_rester, _baseUri, userAgent, consumerKey, consumerSecret);
             Authentication = new Api.Authentication(_rester, _baseUri, userAgent, consumerKey, consumerSecret);

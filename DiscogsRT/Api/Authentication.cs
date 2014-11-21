@@ -10,7 +10,7 @@ namespace BeeWee.DiscogsRT.Api
 {
     public class Authentication : Base
     {
-        internal Authentication(Rester.Client client, string baseUri, string userAgent, string consumerKey, string consumerSecret)
+        internal Authentication(Rester.IClient client, string baseUri, string userAgent, string consumerKey, string consumerSecret)
             : base(client, baseUri, userAgent, consumerKey, consumerSecret)
         {
 
