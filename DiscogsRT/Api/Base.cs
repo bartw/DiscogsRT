@@ -51,8 +51,14 @@ namespace BeeWee.DiscogsRT.Api
 
             var uri = RequestHelper.BuildUri(_baseUri, endpoint, parameters);
 
-            var request = new Rester.Request() { Method = HttpMethod.Get, Uri = uri, Headers = headers };
-            var response = await _client.ExecuteAsync(request);
+            var request = new Rester.GetRequest(uri);
+
+            foreach (var header in headers)
+            {
+                request.Headers.Add(header.Key, header.Value);
+            }
+
+            var response = await _client.ExecuteRawAsync(request, null);
             var discogsResponse = await RequestHelper.ReadResponse(response);
 
             return discogsResponse;
@@ -76,9 +82,17 @@ namespace BeeWee.DiscogsRT.Api
             }
 
             var uri = RequestHelper.BuildUri(_baseUri, endpoint, parameters);
-            
-            var request = new Rester.Request() { Method = HttpMethod.Get, Uri = uri, Headers = headers, ConsumerKey = _consumerKey, ConsumerSecret = _consumerSecret, OAuthKey = oauthKey, OAuthSecret = oauthSecret, Verifier = verifier, SignatureMethod = Rester.SignatureMethod.PLAINTEXT };
-            var response = await _client.ExecuteAsync(request);
+
+            var request = new Rester.GetRequest(uri);
+
+            foreach (var header in headers)
+            {
+                request.Headers.Add(header.Key, header.Value);
+            }
+
+            var authenticator = new Rester.OAuth1Authenticator(Rester.SignatureMethod.PLAINTEXT, _consumerKey, _consumerSecret, oauthKey, oauthSecret, verifier);
+
+            var response = await _client.ExecuteRawAsync(request, authenticator);
             var discogsResponse = await RequestHelper.ReadResponse(response);
 
             return discogsResponse;
@@ -97,8 +111,14 @@ namespace BeeWee.DiscogsRT.Api
             }
 
             var uri = RequestHelper.BuildUri(_baseUri, endpoint, parameters);
-            var request = new Rester.Request() { Method = HttpMethod.Get, Uri = uri, Headers = headers };
-            var response = await _client.ExecuteAsync(request);
+            var request = new Rester.GetRequest(uri);
+
+            foreach (var header in headers)
+            {
+                request.Headers.Add(header.Key, header.Value);
+            }
+
+            var response = await _client.ExecuteRawAsync(request, null);
             var discogsResponse = await RequestHelper.ReadJsonResponse<T>(response);
 
             return discogsResponse;
@@ -122,8 +142,16 @@ namespace BeeWee.DiscogsRT.Api
             }
 
             var uri = RequestHelper.BuildUri(_baseUri, endpoint, parameters);
-            var request = new Rester.Request() { Method = HttpMethod.Get, Uri = uri, Headers = headers, ConsumerKey = _consumerKey, ConsumerSecret = _consumerSecret, OAuthKey = oauthKey, OAuthSecret = oauthSecret, Verifier = verifier, SignatureMethod = Rester.SignatureMethod.PLAINTEXT };
-            var response = await _client.ExecuteAsync(request);
+            var request = new Rester.GetRequest(uri);
+
+            foreach (var header in headers)
+            {
+                request.Headers.Add(header.Key, header.Value);
+            }
+
+            var authenticator = new Rester.OAuth1Authenticator(Rester.SignatureMethod.PLAINTEXT, _consumerKey, _consumerSecret, oauthKey, oauthSecret, verifier);
+
+            var response = await _client.ExecuteRawAsync(request, authenticator);
             var discogsResponse = await RequestHelper.ReadJsonResponse<T>(response);
 
             return discogsResponse;
