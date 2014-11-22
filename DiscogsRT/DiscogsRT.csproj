@@ -49,6 +49,7 @@
     <Compile Include="Api\UserWantlist.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="IClient.cs" />
     <Compile Include="OldClient.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\ArtistReleases.cs" />

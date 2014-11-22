@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeeWee.DiscogsRT
 {
-    public class Client
+    public class Client : IClient
     {
         private ApiService _api;
         private string _consumerKey;
