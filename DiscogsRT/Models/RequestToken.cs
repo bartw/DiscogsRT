@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeeWee.DiscogsRT.Models
 {
-    public class OAuthRequest
+    public class RequestToken
     {
         public string Key { get; set; }
         public string Secret { get; set; }

@@ -25,9 +25,9 @@ namespace BeeWee.DiscogsRT
         {
             return await _api.GetAsync("/oauth/request_token");
         }
-        public async Task<Models.OAuthRequest> GetOAuthRequestAsync()
+        public async Task<Models.RequestToken> GetOAuthRequestAsync()
         {
-            var request = new Models.OAuthRequest();
+            var request = new Models.RequestToken();
 
             var requestTokenString = await GetRequestTokenAsync();
 
@@ -48,9 +48,9 @@ namespace BeeWee.DiscogsRT
             var authenticator = new Rester.OAuth1Authenticator(Rester.SignatureMethod.PLAINTEXT, _consumerKey, _consumerSecret, tokenKey, tokenSecret, verifier);
             return await _api.GetAsync("/oauth/access_token", authenticator: authenticator);
         }
-        public async Task<Models.OAuthAccess> GetOAuthAccesAsync(string tokenKey, string tokenSecret, string verifier)
+        public async Task<Models.AccessToken> GetOAuthAccesAsync(string tokenKey, string tokenSecret, string verifier)
         {
-            var access = new Models.OAuthAccess();
+            var access = new Models.AccessToken();
 
             var accessTokenString = await GetAccessTokenAsync(tokenKey, tokenSecret, verifier);
 
@@ -66,14 +66,16 @@ namespace BeeWee.DiscogsRT
         }
         #endregion
         #region User
-        public async Task<Models.DiscogsResponse<Models.Identity>> GetIdentityAsync()
+        public async Task<Models.DiscogsResponse<Models.Identity>> GetIdentityAsync(string tokenKey, string tokenSecret)
         {
-            return await _api.GetAsync<Models.Identity>("/oauth/identity");
+            var authenticator = new Rester.OAuth1Authenticator(Rester.SignatureMethod.PLAINTEXT, _consumerKey, _consumerSecret, tokenKey, tokenSecret);
+            return await _api.GetAsync<Models.Identity>("/oauth/identity", authenticator: authenticator);
         }
-        public async Task<Models.DiscogsResponse<Models.Profile>> GetProfileAsync(string username)
+        public async Task<Models.DiscogsResponse<Models.Profile>> GetProfileAsync(string tokenKey, string tokenSecret, string username)
         {
             var endpoint = string.Format("/users/{0}", username);
-            return await _api.GetAsync<Models.Profile>(endpoint);
+            var authenticator = new Rester.OAuth1Authenticator(Rester.SignatureMethod.PLAINTEXT, _consumerKey, _consumerSecret, tokenKey, tokenSecret);
+            return await _api.GetAsync<Models.Profile>(endpoint, authenticator: authenticator);
         }
         #endregion
         #region Wantlist

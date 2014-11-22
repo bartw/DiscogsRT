@@ -22,9 +22,9 @@ namespace BeeWee.DiscogsRT.Api
             return await GetOAuth(endpoint, null, null, null, null, null);
         }
 
-        public async Task<OAuthRequest> GetOAuthRequest()
+        public async Task<RequestToken> GetOAuthRequest()
         {
-            var request = new OAuthRequest();
+            var request = new RequestToken();
 
             var requestTokenString = await GetRequestToken();
 
@@ -47,9 +47,9 @@ namespace BeeWee.DiscogsRT.Api
             return await GetOAuth(endpoint, null, null, oauthKey, oauthSecret, verifier);
         }
 
-        public async Task<OAuthAccess> GetOAuthAccess(string oauthKey, string oauthSecret, string verifier)
+        public async Task<AccessToken> GetOAuthAccess(string oauthKey, string oauthSecret, string verifier)
         {
-            var access = new OAuthAccess();
+            var access = new AccessToken();
 
             var accessTokenString = await GetAccessToken(oauthKey, oauthSecret, verifier);
 

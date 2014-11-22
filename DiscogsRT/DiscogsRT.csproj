@@ -48,6 +48,7 @@
     <Compile Include="Api\UserIdentity.cs" />
     <Compile Include="Api\UserWantlist.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="OldClient.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\ArtistReleases.cs" />
@@ -67,8 +68,8 @@
     <Compile Include="Models\LabelReleases.cs" />
     <Compile Include="Models\MasterRelease.cs" />
     <Compile Include="Models\MasterReleaseVersions.cs" />
-    <Compile Include="Models\OAuthAccess.cs" />
-    <Compile Include="Models\OAuthRequest.cs" />
+    <Compile Include="Models\AccessToken.cs" />
+    <Compile Include="Models\RequestToken.cs" />
     <Compile Include="Models\Pagination.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\Rating.cs" />
@@ -89,17 +90,16 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Rester">
-      <HintPath>..\..\Rester\Rester\bin\Release\Rester.dll</HintPath>
-    </Reference>
-    <Reference Include="Utilities">
-      <HintPath>..\..\Utilities\Utilities\bin\Release\Utilities.dll</HintPath>
+      <HintPath>..\packages\BeeWee.Rester.1.0.0\lib\portable-win81+wpa81\Rester.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
