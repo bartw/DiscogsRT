@@ -10,6 +10,7 @@ Disclaimer
 DiscogsRT is a hobby project that I do because I love developing. I do however have a life and family. Therefore I can't give any guarantees about deadlines, crashes or any other problems.
 Features
 -
+* Rate limited to 1 request per second
 * Authentication flow
 * Get identity and profile
 * Get wantlist
