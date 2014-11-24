@@ -32,7 +32,7 @@ You can add DiscogsRT to you project using the following command in the package 
 Install-Package BeeWee.DiscogsRT, or go to [NuGet.org](https://www.nuget.org/packages/BeeWee.DiscogsRT/).
 Dependencies
 -
-DiscogsRT uses [Rester](https://github.com/bartw/Rester) and [JSon.net](http://james.newtonking.com/json).
+DiscogsRT uses [Rester](https://github.com/bartw/Rester) and [Json.NET](http://james.newtonking.com/json).
 Usage
 -
 ```c#
