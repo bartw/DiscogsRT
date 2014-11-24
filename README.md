@@ -26,6 +26,13 @@ Features
 Problems, questions and suggestions
 -
 If you have problems, questions or suggestions you can post them in the [issues](https://github.com/bartw/DiscogsRT/issues) of this repository.
+NuGet
+-
+You can add DiscogsRT to you project using the following command in the package manager console: 
+Install-Package BeeWee.DiscogsRT, or go to [NuGet.org](https://www.nuget.org/packages/BeeWee.DiscogsRT/).
+Dependencies
+-
+DiscogsRT uses [Rester](https://github.com/bartw/Rester) and [JSon.net](http://james.newtonking.com/json).
 Usage
 -
 ```c#
