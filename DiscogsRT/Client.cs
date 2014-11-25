@@ -21,7 +21,8 @@ namespace BeeWee.DiscogsRT
         #region Authentication
         public async Task<Models.DiscogsResponse<string>> GetRequestTokenAsync()
         {
-            return await _api.GetAsync("/oauth/request_token");
+            var authenticator = new Rester.OAuth1Authenticator(Rester.SignatureMethod.PLAINTEXT, _consumerKey, _consumerSecret);
+            return await _api.GetAsync("/oauth/request_token", authenticator: authenticator);
         }
         public async Task<Models.RequestToken> GetOAuthRequestAsync()
         {
