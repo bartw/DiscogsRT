@@ -37,7 +37,7 @@ namespace BeeWee.DiscogsRT
                 request.Key = splitted["oauth_token"];
                 request.Secret = splitted["oauth_token_secret"];
 
-                request.Uri = string.Format("http://www.discogs.com/oauth/authorize?oauth_token={0}", request.Key);
+                request.Uri = string.Format("https://www.discogs.com/oauth/authorize?oauth_token={0}", request.Key);
             }
 
             return request;
