@@ -16,6 +16,8 @@ namespace BeeWee.DiscogsRT
         #endregion
         #region Wantlist
         Task<Models.DiscogsResponse<Models.WantResults>> GetWantsAsync(string tokenKey, string tokenSecret, string username, int perPage = -1, int page = -1);
+        Task<Models.DiscogsResponse<Models.Want>> AddWantAsync(string tokenKey, string tokenSecret, string username, string id);
+        Task<Models.DiscogsResponse<string>> DeleteWantAsync(string tokenKey, string tokenSecret, string username, string id);
         #endregion
         #region Collection
         Task<Models.DiscogsResponse<Models.CollectionResults>> GetFolderReleasesAsync(string tokenKey, string tokenSecret, string username, int id = 0, int perPage = -1, int page = -1);

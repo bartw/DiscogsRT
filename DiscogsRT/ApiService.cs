@@ -37,10 +37,56 @@ namespace BeeWee.DiscogsRT
             return discogsResponse;
         }
 
+        public async Task<Models.DiscogsResponse<T>> PostAsync<T>(string endpoint, Dictionary<string, string> parameters = null, Rester.IAuthenticator authenticator = null, string content = null) where T : new()
+        {
+            HttpResponseMessage response = await PostRawAsync(endpoint, parameters, authenticator, content);
+            var discogsResponse = await ReadJsonResponse<T>(response);
+
+            return discogsResponse;
+        }
+
+        public async Task<Models.DiscogsResponse<T>> PutAsync<T>(string endpoint, Dictionary<string, string> parameters = null, Rester.IAuthenticator authenticator = null, string content = null) where T : new()
+        {
+            HttpResponseMessage response = await PutRawAsync(endpoint, parameters, authenticator, content);
+            var discogsResponse = await ReadJsonResponse<T>(response);
+
+            return discogsResponse;
+        }
+
+        public async Task<Models.DiscogsResponse<string>> DeleteAsync(string endpoint, Dictionary<string, string> parameters = null, Rester.IAuthenticator authenticator = null)
+        {
+            HttpResponseMessage response = await DeleteRawAsync(endpoint, parameters, authenticator);
+            var discogsResponse = await ReadResponse(response);
+
+            return discogsResponse;
+        }
+
         private async Task<HttpResponseMessage> GetRawAsync(string endpoint, Dictionary<string, string> parameters, Rester.IAuthenticator authenticator)
         {
             var request = new Rester.GetRequest(BuildUri(endpoint, parameters));
+            return await ExecuteAsync(request, authenticator);
+        }
 
+        private async Task<HttpResponseMessage> PostRawAsync(string endpoint, Dictionary<string, string> parameters, Rester.IAuthenticator authenticator, string content)
+        {
+            var request = new Rester.PostRequest(BuildUri(endpoint, parameters), content, Encoding.UTF8, "application/json");
+            return await ExecuteAsync(request, authenticator);
+        }
+
+        private async Task<HttpResponseMessage> PutRawAsync(string endpoint, Dictionary<string, string> parameters, Rester.IAuthenticator authenticator, string content)
+        {
+            var request = new Rester.PutRequest(BuildUri(endpoint, parameters), content, Encoding.UTF8, "application/json");
+            return await ExecuteAsync(request, authenticator);
+        }
+
+        private async Task<HttpResponseMessage> DeleteRawAsync(string endpoint, Dictionary<string, string> parameters, Rester.IAuthenticator authenticator)
+        {
+            var request = new Rester.DeleteRequest(BuildUri(endpoint, parameters));
+            return await ExecuteAsync(request, authenticator);
+        }
+
+        private async Task<HttpResponseMessage> ExecuteAsync(Rester.Request request, Rester.IAuthenticator authenticator)
+        {
             request.Headers.Add(_userAgentKey, _userAgent);
 
             return await _rester.ExecuteRawAsync(request, authenticator);

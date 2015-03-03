@@ -96,6 +96,24 @@ namespace BeeWee.DiscogsRT
 
             return await _api.GetAsync<Models.WantResults>(endpoint, parameters, authenticator);
         }
+
+        public async Task<Models.DiscogsResponse<Models.Want>> AddWantAsync(string tokenKey, string tokenSecret, string username, string id)
+        {
+            var endpoint = string.Format("/users/{0}/wants/{1}", username, id);
+            var authenticator = new Rester.OAuth1Authenticator(Rester.SignatureMethod.PLAINTEXT, _consumerKey, _consumerSecret, tokenKey, tokenSecret);
+            var parameters = new Dictionary<string, string>();
+
+            return await _api.PutAsync<Models.Want>(endpoint, parameters, authenticator);
+        }
+
+        public async Task<Models.DiscogsResponse<string>> DeleteWantAsync(string tokenKey, string tokenSecret, string username, string id)
+        {
+            var endpoint = string.Format("/users/{0}/wants/{1}", username, id);
+            var authenticator = new Rester.OAuth1Authenticator(Rester.SignatureMethod.PLAINTEXT, _consumerKey, _consumerSecret, tokenKey, tokenSecret);
+            var parameters = new Dictionary<string, string>();
+
+            return await _api.DeleteAsync(endpoint, parameters, authenticator);
+        }
         #endregion
         #region Collection
         public async Task<Models.DiscogsResponse<Models.CollectionResults>> GetFolderReleasesAsync(string tokenKey, string tokenSecret, string username, int id = 0, int perPage = -1, int page = -1)
@@ -116,6 +134,26 @@ namespace BeeWee.DiscogsRT
 
             return await _api.GetAsync<Models.CollectionResults>(endpoint, parameters, authenticator);
         }
+
+        public async Task<Models.DiscogsResponse<Models.CollectionResults>> AddReleaseToFolderAsync(string tokenKey, string tokenSecret, string username, int id = 0, int perPage = -1, int page = -1)
+        {
+            var endpoint = string.Format("/users/{0}/collection/folders/{1}/releases", username, id);
+            var authenticator = new Rester.OAuth1Authenticator(Rester.SignatureMethod.PLAINTEXT, _consumerKey, _consumerSecret, tokenKey, tokenSecret);
+            var parameters = new Dictionary<string, string>();
+
+            if (perPage > 0)
+            {
+                parameters.Add("per_page", perPage.ToString());
+            }
+
+            if (page > 0)
+            {
+                parameters.Add("page", page.ToString());
+            }
+
+            return await _api.GetAsync<Models.CollectionResults>(endpoint, parameters, authenticator);
+        }
+
         #endregion
         #region Database
         public async Task<Models.DiscogsResponse<Models.Release>> GetReleaseAsync(string id)

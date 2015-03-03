@@ -39,18 +39,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiService.cs" />
-    <Compile Include="Api\Authentication.cs" />
-    <Compile Include="Api\Base.cs" />
-    <Compile Include="Api\Database.cs" />
-    <Compile Include="Api\Images.cs" />
-    <Compile Include="Api\Marketplace.cs" />
-    <Compile Include="Api\UserCollection.cs" />
-    <Compile Include="Api\UserIdentity.cs" />
-    <Compile Include="Api\UserWantlist.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="IClient.cs" />
-    <Compile Include="OldClient.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\ArtistReleases.cs" />
     <Compile Include="Models\BasicInformation.cs" />
@@ -91,10 +82,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Rester">
-      <HintPath>..\packages\BeeWee.Rester.1.0.2\lib\portable-win81+wpa81\Rester.dll</HintPath>
+      <HintPath>..\packages\BeeWee.Rester.1.0.4\lib\portable-win81+wpa81\Rester.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
