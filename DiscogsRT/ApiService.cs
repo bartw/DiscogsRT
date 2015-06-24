@@ -152,5 +152,40 @@ namespace BeeWee.DiscogsRT
 
             return discogsResponse;
         }
+
+        public async Task<HttpResponseMessage> GetAsyncHttp(string endpoint, Dictionary<string, string> parameters = null, Rester.IAuthenticator authenticator = null)
+        {
+            HttpResponseMessage response = await GetRawAsyncHttp(endpoint, parameters, authenticator);
+            response.EnsureSuccessStatusCode();
+            return response;
+        }
+
+        private async Task<HttpResponseMessage> GetRawAsyncHttp(string endpoint, Dictionary<string, string> parameters, Rester.IAuthenticator authenticator)
+        {
+            var request = new Rester.GetRequest(BuildUriImage(endpoint, parameters));
+            return await ExecuteAsync(request, authenticator);
+        }
+
+        private string BuildUriImage(string endpoint, Dictionary<string, string> parameters)
+        {
+            var uriBuilder = new StringBuilder();
+
+            // dont use base for Images uriBuilder.Append(_baseUri);
+
+            uriBuilder.Append(endpoint);
+
+            bool firstParam = true;
+
+            if (parameters != null && parameters.Count > 0)
+            {
+                foreach (var parameter in parameters)
+                {
+                    uriBuilder.AppendFormat("{0}{1}={2}", firstParam ? "?" : "&", parameter.Key, parameter.Value);
+                    firstParam = false;
+                }
+            }
+
+            return uriBuilder.ToString();
+        }
     }
 }
