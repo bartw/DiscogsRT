@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Http;
 
 namespace BeeWee.DiscogsRT
 {
@@ -9,6 +10,9 @@ namespace BeeWee.DiscogsRT
         private ApiService _api;
         private string _consumerKey;
         private string _consumerSecret;
+
+        public string token;
+        public string tokensecret;
 
         public Client(string userAgent, string consumerKey, string consumerSecret)
         {
@@ -212,6 +216,13 @@ namespace BeeWee.DiscogsRT
         #region Marketplace
         #endregion
         #region Images
+        public async Task<HttpResponseMessage> GetImageAsync(string uri)
+        {
+            var endpoint = uri;
+            var authenticator = new Rester.OAuth1Authenticator(Rester.SignatureMethod.PLAINTEXT, _consumerKey, _consumerSecret, token, tokensecret);
+            HttpResponseMessage response = await _api.GetAsyncHttp(endpoint, null, authenticator);
+            return response;
+        }
         #endregion
     }
 }
